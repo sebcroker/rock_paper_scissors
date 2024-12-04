@@ -27,6 +27,13 @@ let humanScore = 0, computerScore = 0, round = 0;
     }
 };*/
 
+/**Function should play through a round. A round includes a selection from the human from getHumanChoice(choice)
+ * And a selection from the computer getComputerChoice()
+ */
+function playRound() {
+
+}
+
 if (humanScore == computerScore) {
     alert("No winners. Better luck next time guys.");
 } else if (humanScore > computerScore) {
