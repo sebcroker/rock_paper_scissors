@@ -1,46 +1,50 @@
-let humanScore = 0, computerScore = 0, round = 0;
-
-// using a loop is better here.
-/**for (let round = 0; round < 5; round++) {
-    let humanChoice = getHumanChoice(prompt("Please choose one of: 'Rock, Paper or Scissors' as your choice"));
-    let computerChoice = getComputerChoice();
-    if (humanChoice == computerChoice) {
-        alert("Both chose the same thing! No points for anyone.");
-    } else if (humanChoice == "rock" && computerChoice == "scissors") {
-        alert("Human won that round! One point to the humanoids.");
-        humanScore++;
-    } else if (humanChoice == "rock" && computerChoice == "paper") {
-        alert("The bots are taking over. One point to the computer!");
-        computerScore++;
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-        alert("Human won that round! One point to the humanoids.");
-        humanScore++;
-    } else if (humanChoice == "paper" && computerChoice == "scissors") {
-        alert("The bots are taking over. One point to the computer!");
-        computerScore++;
-    } else if (humanChoice == "scissors" && computerChoice == "rock") {
-        alert("The bots are taking over. One point to the computer!");
-        computerScore++;
-    } else if (humanChoice == "scissors" && computerChoice == "paper") {
-        alert("Human won that round! One point to the humanoids.");
-        humanScore++;
-    }
-};*/
-
-/**Function should play through a round. A round includes a selection from the human from getHumanChoice(choice)
- * And a selection from the computer getComputerChoice()
+/**Adding a querySelector to all buttons and selecting for each button
+ * And the same is being done for the span group.
  */
-function playRound() {
+let humanScore = 0, computerScore = 0;
+const buttons = document.querySelectorAll("button");
+const scores = document.querySelectorAll("span");
+startGame();
 
-}
-
-if (humanScore == computerScore) {
-    alert("No winners. Better luck next time guys.");
-} else if (humanScore > computerScore) {
-    alert("Humans win this time.");
-} else {
-    alert("Computers win. Wow.");
-}
+/**.forEach() is an iterative method of arrays (and nodelists)
+ * It requires a callback function that executes onto each element of the array (or node list)
+ * Its return value is discarded.
+ */
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        if (button.id === computerChoice) {
+            alert("No points for anyone.");
+        } else if (button.id == "rock" && computerChoice == "scissors") {
+            humanScore++;
+            alert("Human won that round! One point to the humanoids.");
+        } else if (button.id == "rock" && computerChoice == "paper") {
+            computerScore++;
+            
+            alert("The bots are taking over. One point to the computer!");
+        } else if (button.id == "paper" && computerChoice == "rock") {
+            humanScore++;
+            
+            alert("Human won that round! One point to the humanoids.");
+        } else if (button.id == "paper" && computerChoice == "scissors") {
+            computerScore++;
+            
+            alert("The bots are taking over. One point to the computer!");
+        } else if (button.id == "scissors" && computerChoice == "rock") {
+            computerScore++;
+            
+            alert("The bots are taking over. One point to the computer!");
+        } else if (button.id == "scissors" && computerChoice == "paper") {
+            humanScore++;
+            
+            alert("Human won that round! One point to the humanoids.");
+        }
+        printScore();
+        if (humanScore === 5 || computerScore === 5) {
+            finishGame();
+        }
+    });
+});
 
 function getComputerChoice() {
     let number = Math.random();
@@ -62,5 +66,33 @@ function getHumanChoice(choice) {
         return "scissors";
     } else {
         return getHumanChoice(prompt("Please choose one of: 'Rock, Paper or Scissors' as your choice"));
+    }
+};
+
+/**The below is for showing the results and the rounds*/
+function printScore() {
+    scores.forEach((score) => {
+        if (score.id === "humanResults") {
+            score.textContent = humanScore;
+        } else {
+            score.textContent = computerScore;
+        }
+    });
+};
+
+/**Start game function: sets text content so that it renders as 0 on the screen */
+function startGame() {
+    humanScore = 0, computerScore = 0;
+    scores.forEach((score) => score.textContent = 0);
+};
+
+/**Finish game function: alerts who is the winner, starts another game*/
+function finishGame() {
+    if (humanScore > computerScore) {
+        alert("Humans won the game. Start again!");
+        startGame();
+    } else {
+        alert("Computers won the game. Start again!");
+        startGame();
     }
 };

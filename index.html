@@ -8,11 +8,25 @@
 </head>
 
 <body>
-    <div>
-        <button class = "rock"> <img src = "https://rockidentifier.com/wiki-image/1080/C435ABC3002C4CF78D565DBE56D7CF4B.jpeg" alt = "Rough rock" id = "rockPicture"> </button>
-        <button class = "paper"></button>
-        <button class = "scissors"></button>
+    <div id = "container">
+        <button id="rock">
+            <img src="https://rockidentifier.com/wiki-image/1080/C435ABC3002C4CF78D565DBE56D7CF4B.jpeg" alt="Rough rock" height=200px width=auto>
+        </button>
+
+        <button id = "paper">
+            <img src = "https://cie-elle.com.au/wp-content/uploads/2017/03/paper.jpg" alt = "White paper in hand" height = 200px width = auto>
+        </button>
+
+        <button id = "scissors">
+            <img src = "https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.625,f_auto,h_197,q_auto,w_350/c_pad,h_197,w_350/C5099960-06?pgw=1" alt = "Scissors with a black handle and red lining on the inside of the handle" height = 200px width = auto>
+        </button>
     </div>
+
+    <div id = "results">
+        Human Score: <span id = "humanResults"></span>
+        Computer Score: <span id = "computerResults"></span>
+    </div>
+
     <script src = "index.js"></script>
 </body>
 </html>
