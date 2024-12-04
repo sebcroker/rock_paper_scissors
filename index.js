@@ -1,18 +1,7 @@
 let humanScore = 0, computerScore = 0, round = 0;
 
-
-//for arguments sake, i'm going to make a playRound function to play one round.
-
-//function playRound(humanChoice, computerChoice) {
-    //this will just check if the humanChoice beats the computerChoice or is equal.
-    //Then improve the human or computerscore and log something to the user
-    //
-//}
-
-//then the playGame function will call playRound 5 times
-
 // using a loop is better here.
-for (let round = 0; round < 5; round++) {
+/**for (let round = 0; round < 5; round++) {
     let humanChoice = getHumanChoice(prompt("Please choose one of: 'Rock, Paper or Scissors' as your choice"));
     let computerChoice = getComputerChoice();
     if (humanChoice == computerChoice) {
@@ -36,7 +25,7 @@ for (let round = 0; round < 5; round++) {
         alert("Human won that round! One point to the humanoids.");
         humanScore++;
     }
-};
+};*/
 
 if (humanScore == computerScore) {
     alert("No winners. Better luck next time guys.");
